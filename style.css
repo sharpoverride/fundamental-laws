@@ -414,6 +414,84 @@ body {
   transition: color 700ms;
 }
 
+/* ─── Chapter extras (domain, keywords, visual, questions) ─────── */
+.meta-block {
+  padding-top: 14px;
+  border-top: 1px solid var(--ink-faint);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.meta-label {
+  color: var(--ink-faint);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.meta-value {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  transition: color 700ms;
+}
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.keyword {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  padding: 4px 8px;
+  border: 1px solid var(--ink-faint);
+  color: var(--ink-dim);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.visual {
+  margin-top: 8px;
+  padding: 14px 16px;
+  border: 1px solid;
+  color: var(--ink-dim);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.25);
+  transition: border-color 700ms;
+}
+
+.questions {
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--ink-faint);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.questions-label {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  transition: color 700ms;
+}
+.questions-list {
+  margin: 0;
+  padding: 0 0 0 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 52ch;
+}
+.question {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.55;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
 /* ─── Outro ─────────────────────────────────────────────────────── */
 .outro {
   position: absolute;

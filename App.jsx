@@ -242,6 +242,19 @@ function Chapter({ law, index, scrollProgress, introGone }) {
             <LawGlyph law={law} size={72} />
           </div>
           <div className="mono lens">{law.lens.toUpperCase()}</div>
+          {law.domain && (
+            <div className="meta-block">
+              <div className="meta-label mono">Source field</div>
+              <div className="meta-value" style={{ color: law.accent }}>{law.domain}</div>
+            </div>
+          )}
+          {Array.isArray(law.keywords) && law.keywords.length > 0 && (
+            <div className="keywords">
+              {law.keywords.map((kw) => (
+                <span key={kw} className="keyword mono">{kw}</span>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="chapter-body">
@@ -257,6 +270,21 @@ function Chapter({ law, index, scrollProgress, introGone }) {
             <span className="aphorism-mark" style={{ color: law.accent }}>—</span>
             {law.aphorism}
           </blockquote>
+          {law.visual && (
+            <div className="visual mono" style={{ borderColor: law.accent + "55" }}>
+              {law.visual}
+            </div>
+          )}
+          {Array.isArray(law.questions) && law.questions.length > 0 && (
+            <div className="questions">
+              <div className="questions-label mono" style={{ color: law.accent }}>Sit with</div>
+              <ol className="questions-list">
+                {law.questions.map((q, i) => (
+                  <li key={i} className="question">{q}</li>
+                ))}
+              </ol>
+            </div>
+          )}
         </div>
       </div>
     </section>
