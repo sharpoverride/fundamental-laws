@@ -414,7 +414,6 @@ const SineWaveBackground = ({ isIntro, activeColor, isRealityMode }: { isIntro: 
 export default function App() {
   const [isIntro, setIsIntro] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isScrolling, setIsScrolling] = useState(false);
   const [activeTab, setActiveTab] = useState<'theory' | 'reality' | 'patterns' | 'questions'>('theory');
   const [isRealityMode, setIsRealityMode] = useState(false);
   
@@ -460,23 +459,11 @@ export default function App() {
       if (e.key === 'Enter' && isIntro) setIsIntro(false);
     };
 
-    const handleWheel = (e: WheelEvent) => {
-      if (isIntro || isScrolling) return;
-      setIsScrolling(true);
-      
-      if (e.deltaY > 50) handleNext();
-      else if (e.deltaY < -50) handlePrev();
-      
-      setTimeout(() => setIsScrolling(false), 800); // Debounce wheel
-    };
-
     window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('wheel', handleWheel);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('wheel', handleWheel);
     };
-  }, [handleNext, handlePrev, isIntro, isScrolling]);
+  }, [handleNext, handlePrev, isIntro]);
 
   return (
     <div className={`relative w-full h-screen text-white overflow-hidden transition-colors duration-1000 selection:bg-white/20 ${isRealityMode ? 'bg-[#0a0f12] font-mono' : 'bg-[#050505] font-sans'}`}>
@@ -794,7 +781,7 @@ export default function App() {
             </div>
 
             {/* Bottom Timeline */}
-            <footer className="w-full p-6 border-t border-white/5 bg-black/20 backdrop-blur-md">
+            <footer className="w-full pt-6 pb-12 px-6 border-t border-white/5 bg-black/20 backdrop-blur-md">
               <div className="max-w-4xl mx-auto flex justify-between items-center relative">
                 {/* Connecting line */}
                 <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[1px] bg-white/10 z-0"></div>
